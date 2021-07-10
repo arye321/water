@@ -53,7 +53,7 @@ function updateBigCupLoad(cups) {
     const fullCups = cups
     const totalCups = smallCups.length
    
-    if(fullCups === 0) {
+    if(fullCups == 0) {
         percentage.style.visibility = 'hidden'
         percentage.style.height = 0
     } else {
@@ -96,7 +96,7 @@ function set_lastvisit() {
    setCookie("lastvisited", Date.parse(d),100);
 }
 function get_lastvisit() {
-  var lastVisitVar=getCookie("lastvisited1");
+  var lastVisitVar=getCookie("lastvisited");
   if (lastVisitVar != "") {
     date1 =  new Date(parseInt(lastVisitVar));  
     return date1
@@ -114,9 +114,16 @@ function get_cups() {
   }
   return "0"
 }
-console.log(new Date().getDay())
 
+if ((new Date().getDay()) == get_lastvisit().getDay()){
 
-updateBigCupLoad(get_cups())
+  updateBigCupLoad(get_cups())
+  
+}
+else {
+  updateBigCup()
+}
 
 set_lastvisit()
+
+
